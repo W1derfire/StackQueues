@@ -14,8 +14,18 @@ public class OneStackQueueSubtractor implements Runnable{
             if(sharedThigamajig.get().equals(Boolean.FALSE)) {
                 Thread.currentThread().yield();
                 System.out.println(sharedThigamajig.get().toString() + " - Taken out by " + name + "!");
+                try {
+                    Thread.sleep(10);
+                }catch (Exception e) {
+
+                }
             }else{
                 System.out.print(" - Taken out by " + name + "!\n");
+                try {
+                    Thread.sleep(10);
+                }catch (Exception e) {
+
+                }
             }
         }
     }

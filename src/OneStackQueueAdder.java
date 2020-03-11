@@ -1,4 +1,4 @@
-public class OneStackQueueAdder implements Runnable{
+public class OneStackQueueAdder implements Runnable {
     StackQueue sharedThigamajig;
     int howManyTimes;
     String name;
@@ -11,12 +11,12 @@ public class OneStackQueueAdder implements Runnable{
 
     public void run(){
         for(int i = 0; i < howManyTimes; i ++){
-            if(!sharedThigamajig.put(i)){
+            boolean didWork = false;
+            didWork = sharedThigamajig.put((i + " from " + this.name));
+            while(!didWork){
                 Thread.yield();
-                sharedThigamajig.put(i);
-                System.out.println(i + " is true. Thanks, " + name + "!");
+                didWork = sharedThigamajig.put((i + " from " + this.name));
             }
-            System.out.println(i + " is true. Thanks, " + name + "!");
 
         }
     }
